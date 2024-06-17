@@ -1,0 +1,142 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdokn6oql3qf0"]
+
+[ext_resource type="Texture2D" uid="uid://xo46nr0kicej" path="res://assets/timer.png" id="1_qqknp"]
+[ext_resource type="FontFile" uid="uid://bttn4sbekg567" path="res://assets/alarm clock.ttf" id="2_3livf"]
+
+[node name="Main" type="CanvasLayer"]
+
+[node name="Timer" type="Sprite2D" parent="."]
+position = Vector2(597.063, 309.875)
+scale = Vector2(0.320906, 0.35988)
+texture = ExtResource("1_qqknp")
+
+[node name="MainTimer" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.353
+anchor_right = 0.624
+anchor_bottom = 0.494
+offset_left = -42.995
+offset_top = 1.13098
+offset_right = -14.723
+offset_bottom = 8.763
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 94
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="LabelDecimales" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 709.125
+offset_top = 270.875
+offset_right = 761.125
+offset_bottom = 323.875
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Srt_Stp" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 0.048
+anchor_bottom = 0.046
+offset_left = 652.125
+offset_top = 388.875
+offset_right = 670.829
+offset_bottom = 439.067
+
+[node name="Sec" type="Button" parent="."]
+modulate = Color(0.781716, 0.304469, 0.327627, 1)
+anchors_preset = -1
+anchor_left = 0.081
+anchor_right = 0.081
+offset_left = 460.813
+offset_top = 396.875
+offset_right = 523.813
+offset_bottom = 464.875
+scale = Vector2(0.943943, 0.919862)
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 51
+text = "S"
+
+[node name="Min" type="Button" parent="."]
+modulate = Color(0.781716, 0.304469, 0.327627, 1)
+anchors_preset = -1
+anchor_left = 0.081
+anchor_right = 0.081
+offset_left = 372.813
+offset_top = 396.875
+offset_right = 435.813
+offset_bottom = 464.875
+scale = Vector2(0.903943, 0.948267)
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 51
+text = "M"
+
+[node name="on off" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 466.125
+offset_top = 187.875
+offset_right = 550.125
+offset_bottom = 210.875
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 17
+text = "STOPPED"
+
+[node name="Mode_sign" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 670.125
+offset_top = 187.875
+offset_right = 745.125
+offset_bottom = 210.875
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 17
+text = "TIMER"
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.353
+anchor_right = 0.624
+anchor_bottom = 0.494
+offset_left = 278.005
+offset_top = 95.131
+offset_right = 336.277
+offset_bottom = 129.763
+rotation = 1.5708
+scale = Vector2(0.12976, 0.159998)
+theme_override_font_sizes/font_size = 92
+text = "MODE"
+horizontal_alignment = 1
+
+[node name="Modebutton" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 0.048
+anchor_bottom = 0.046
+offset_left = 779.125
+offset_top = 323.875
+offset_right = 740.829
+offset_bottom = 318.067
+
+[node name="Clear" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 0.048
+anchor_bottom = 0.046
+offset_left = 652.125
+offset_top = 144.875
+offset_right = 661.829
+offset_bottom = 143.067
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 18
+text = "CLEAR
+"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 458.0
+offset_top = 522.0
+offset_right = 628.0
+offset_bottom = 545.0
+scale = Vector2(1.01143, 1.51375)
+theme_override_font_sizes/font_size = 27
+text = "By: Jojo Vargas Toledo"
