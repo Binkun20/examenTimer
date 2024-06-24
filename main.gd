@@ -1,11 +1,108 @@
 extends CanvasLayer
 
+var minutes = 0
+var seconds = 0
+var decimals = 0 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var mode_sign = 'TIMER'
+
+var is_timer = true
+
+func update_label():
+	$DecimalLabel.text = str(decimals)
+	$TimeLabel.text = '%02d:%02d'%[minutes,seconds]
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_srt_stp_pressed():
+	if $Timer.is_stopped():
+		$Timer.start()
+		$state.text = 'RUNNING'
+	else:
+		$Timer.stop()
+		$state.text = 'STOPPED'
+
+
+func update_stopwatch():
+	decimals += 1
+	if decimals >= 10:
+		decimals = 0
+		seconds += 1
+	if seconds >= 60:
+		seconds = 0
+		minutes += 1
+	if minutes >= 59:
+		seconds = 59
+		minutes = 59
+		decimals = 9
+		$state.text = 'STOPPED'
+		$Timer.stop()
+		$Sound.play()
+	update_label()
+	
+	
+func update_timer():
+	decimals -= 1
+	if decimals < 0:
+		decimals = 9
+		seconds -= 1
+	if seconds < 0:
+		seconds = 59
+		minutes -= 1
+	if minutes < 0:
+		minutes = 0
+		seconds = 0
+		decimals = 0
+		$state.text = 'STOPPED'
+		$Timer.stop()
+		$Sound.play()
+	update_label()
+
+
+func _on_clear_pressed():
+	if $Timer.is_stopped():
+		minutes = 0
+		seconds = 0
+		decimals = 0
+		update_label()
+
+
+func _on_modebutton_pressed():
+	if $Timer.is_stopped():
+		minutes = 0
+		seconds = 0
+		decimals = 0 
+		is_timer = !is_timer
+		if is_timer == true:
+			mode_sign = 'TIMER'
+		else:
+			mode_sign = 'STOPWATCH'
+	update_label()
+	$ModeState.text = mode_sign
+
+
+
+
+func _on_min_pressed():
+	if $Timer.is_stopped() and is_timer == true:
+		minutes += 1
+		if minutes > 59:
+			minutes = 0
+		decimals = 0
+		update_label()
+
+
+func _on_sec_pressed():
+	if $Timer.is_stopped() and is_timer == true:
+		seconds += 1
+		if seconds > 59:
+			seconds = 0
+		decimals = 0
+		update_label()
+
+
+
+func _on_timer_timeout():
+	if is_timer == false:
+		update_stopwatch()
+	else:
+		update_timer()

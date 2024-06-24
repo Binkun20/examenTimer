@@ -1,40 +1,98 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdokn6oql3qf0"]
+[gd_scene load_steps=5 format=3 uid="uid://cdokn6oql3qf0"]
 
 [ext_resource type="Texture2D" uid="uid://xo46nr0kicej" path="res://assets/timer.png" id="1_qqknp"]
+[ext_resource type="Script" path="res://main.gd" id="1_uhhd8"]
 [ext_resource type="FontFile" uid="uid://bttn4sbekg567" path="res://assets/alarm clock.ttf" id="2_3livf"]
+[ext_resource type="AudioStream" uid="uid://dy8lceolfg786" path="res://Iphone-Alarm-Sound-Effect.wav" id="4_blyiw"]
 
 [node name="Main" type="CanvasLayer"]
+script = ExtResource("1_uhhd8")
 
-[node name="Timer" type="Sprite2D" parent="."]
+[node name="TimerBase" type="Sprite2D" parent="."]
 position = Vector2(597.063, 309.875)
 scale = Vector2(0.320906, 0.35988)
 texture = ExtResource("1_qqknp")
 
-[node name="MainTimer" type="Label" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="TimeLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.372
+anchor_right = 0.597
+anchor_bottom = 0.494
+offset_left = -59.12
+offset_top = -13.056
+offset_right = 81.256
+offset_bottom = 6.888
+scale = Vector2(0.762106, 0.904315)
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 94
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="DecimalLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.139
+anchor_right = 0.035
+anchor_bottom = 0.139
+offset_left = 642.68
+offset_top = 153.928
+offset_right = 682.68
+offset_bottom = 223.928
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 66
+text = "0"
+
+[node name="state" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 466.125
+offset_top = 187.875
+offset_right = 550.125
+offset_bottom = 210.875
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 17
+text = "STOPPED"
+
+[node name="ModeState" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 640.0
+offset_top = 188.0
+offset_right = 715.0
+offset_bottom = 211.0
+theme_override_fonts/font = ExtResource("2_3livf")
+theme_override_font_sizes/font_size = 17
+text = "TIMER"
+
+[node name="Mode" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
 anchors_preset = -1
 anchor_left = 0.435
 anchor_top = 0.353
 anchor_right = 0.624
 anchor_bottom = 0.494
-offset_left = -42.995
-offset_top = 1.13098
-offset_right = -14.723
-offset_bottom = 8.763
-theme_override_fonts/font = ExtResource("2_3livf")
-theme_override_font_sizes/font_size = 94
-text = "00:00"
+offset_left = 278.005
+offset_top = 95.131
+offset_right = 336.277
+offset_bottom = 129.763
+rotation = 1.5708
+scale = Vector2(0.12976, 0.159998)
+theme_override_font_sizes/font_size = 92
+text = "MODE"
 horizontal_alignment = 1
 
-[node name="LabelDecimales" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-offset_left = 709.125
-offset_top = 270.875
-offset_right = 761.125
-offset_bottom = 323.875
-theme_override_fonts/font = ExtResource("2_3livf")
-theme_override_font_sizes/font_size = 50
-text = "0"
+[node name="Title" type="Label" parent="."]
+offset_left = 458.0
+offset_top = 522.0
+offset_right = 747.0
+offset_bottom = 559.0
+scale = Vector2(1.01143, 1.51375)
+theme_override_font_sizes/font_size = 27
+text = "By: Jojo Vargas Toledo"
 
 [node name="Srt_Stp" type="Button" parent="."]
 anchors_preset = -1
@@ -73,43 +131,6 @@ theme_override_fonts/font = ExtResource("2_3livf")
 theme_override_font_sizes/font_size = 51
 text = "M"
 
-[node name="on off" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-offset_left = 466.125
-offset_top = 187.875
-offset_right = 550.125
-offset_bottom = 210.875
-theme_override_fonts/font = ExtResource("2_3livf")
-theme_override_font_sizes/font_size = 17
-text = "STOPPED"
-
-[node name="Mode_sign" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-offset_left = 670.125
-offset_top = 187.875
-offset_right = 745.125
-offset_bottom = 210.875
-theme_override_fonts/font = ExtResource("2_3livf")
-theme_override_font_sizes/font_size = 17
-text = "TIMER"
-
-[node name="Label2" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-anchors_preset = -1
-anchor_left = 0.435
-anchor_top = 0.353
-anchor_right = 0.624
-anchor_bottom = 0.494
-offset_left = 278.005
-offset_top = 95.131
-offset_right = 336.277
-offset_bottom = 129.763
-rotation = 1.5708
-scale = Vector2(0.12976, 0.159998)
-theme_override_font_sizes/font_size = 92
-text = "MODE"
-horizontal_alignment = 1
-
 [node name="Modebutton" type="Button" parent="."]
 anchors_preset = -1
 anchor_right = 0.048
@@ -132,11 +153,12 @@ theme_override_font_sizes/font_size = 18
 text = "CLEAR
 "
 
-[node name="Label" type="Label" parent="."]
-offset_left = 458.0
-offset_top = 522.0
-offset_right = 628.0
-offset_bottom = 545.0
-scale = Vector2(1.01143, 1.51375)
-theme_override_font_sizes/font_size = 27
-text = "By: Jojo Vargas Toledo"
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_blyiw")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Srt_Stp" to="." method="_on_srt_stp_pressed"]
+[connection signal="pressed" from="Sec" to="." method="_on_sec_pressed"]
+[connection signal="pressed" from="Min" to="." method="_on_min_pressed"]
+[connection signal="pressed" from="Modebutton" to="." method="_on_modebutton_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]
